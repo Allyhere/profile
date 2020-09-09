@@ -1,0 +1,186 @@
+@import url("http://fonts.googleapis.com/css?family=Poppins:300,400,500,700");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  transition: background .3s ease-in-out;
+}
+
+:root {
+  --clr-font: hsl(0, 0%, 15%);
+  --clr-background: hsl(0, 0%, 97%);
+  --clr-background-darker: hsl(0, 0%, 90%);
+  --clr-theme: hsl(280, 100%, 60%);
+  --clr-theme-hover: hsl(280, 74%, 41%);
+
+  --font-main: "Poppins", sans-serif;
+
+  font-family: var(--font-main);
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--clr-background-darker);
+}
+
+.profile {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  height: auto;
+  max-width: 426px;
+  padding: 20px 10px 10px;
+  border-radius: 12px;
+  box-shadow: 3px 3px 12px -5px hsla(0, 0%, 15%, 0.2);
+  box-sizing: content-box;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--clr-background);
+  
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  z-index: 2;
+  transition: 
+    transform 0.6s ease-in-out, 
+    box-shadow 0.4s ease-out;
+}
+
+.profile:hover {
+  transform: rotateX(10deg);
+  box-shadow: 0px 15px 22px hsla(0, 0%, 15%, 0.2);
+}
+.profile > * + * {
+  margin-top: 10px;
+}
+
+.profile__title {
+  font-size: 2rem;
+  color: var(--clr-font);
+}
+
+.profile__img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50% 50%;
+}
+
+.profile__desc {
+  font-size: 1.2rem;
+  color: var(--clr-font);
+  width: clamp(80%, 40ch, 320px);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.profile__link {
+  color: var(--clr-theme);
+  font-size: 1.2rem;
+  text-decoration: none;
+  position: relative;
+  margin-top: 30px;
+}
+
+.profile__link:hover {
+  color: var(--clr-theme-hover);
+}
+
+.profile__link::before {
+  content: "";
+  height: 2px;
+  width: 0;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  background-color: var(--clr-theme);
+  transition: 
+    width 0.4s ease-in, 
+    color 0.4s ease-in-out;
+}
+
+.profile__link:hover::before {
+  width: 100%;
+  background-color: var(--clr-theme-hover);
+}
+
+.profile__list {
+  width: fit-content;
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0;
+  overflow: hidden;
+}
+
+.list__link {
+  color: var(--clr-font);
+  font-size: 2rem;
+  transition: 
+    color .3s ease-in-out,
+    font-size .2s ease-in-out;
+}
+
+.list__link:hover {
+  color: var(--clr-theme-hover);
+  font-size: 2.1rem;
+}
+
+.list__link:visited {
+  color: var(--clr-theme-hover);
+}
+
+.switch {
+  all: unset;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 10px;
+  left: 20px;
+  cursor: pointer;
+}
+
+.switch:focus-within + .container {
+  --clr-font: hsl(0, 0%, 98%);
+  --clr-background: hsl(0, 0%, 15%);
+  --clr-background-darker: hsl(0, 0%, 5%);
+  --clr-theme: hsl(280, 100%, 60%);
+  --clr-theme-hover: hsl(270, 74%, 50%);
+}
+
+.switch p {
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 360px) {
+  .profile {
+    max-width: 90%;
+    box-sizing: content-box;
+  }
+
+  .profile__img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile__title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --clr-font: hsl(0, 0%, 98%);
+    --clr-background: hsl(0, 0%, 15%);
+    --clr-theme: hsl(280, 100%, 60%);
+    --clr-theme-hover: hsl(270, 74%, 50%);
+  }
+}
